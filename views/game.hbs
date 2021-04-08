@@ -1,0 +1,13 @@
+<div>
+    <label for="cantidadP">Tiempo por cada palabra</label>
+    <input step="0.1" type="number" name="cantidadP" id="cantidadP" placeholder="La velocidad en segundos de cada palabra" value="1" required>
+    <button  id="playBtn">Comenzar</button>
+    <br>
+    <p><strong>Total palabras: {{numbWords}}</strong></p>
+</div>
+<div class="board">
+    <p id="textView">{{txt}}</p>
+</div>
+
+{{!-- scripts --}}
+<script  src="/dist/appGame.js"></script>

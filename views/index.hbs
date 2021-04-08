@@ -1,0 +1,86 @@
+<div class="card">
+    <p>
+        Bienvenido a este pequeño juego el cual te ayudara a entrenar tu cerebro para
+        procesar mas rapido la información en el menor tiempo posible, de esa manera podras
+        leer a una mayor velocidad.
+        <br><br>
+        <strong>
+            Para comenzar unicamente pega cualquier texto mayor a 60 palabra y dale al 
+            botón de jugar para comenzar 
+        </strong>
+    </p>
+</div>
+
+<div class="formsContent">
+    <input type="radio" name="textType" id="copyText" checked>
+    <input type="radio" name="textType" id="pdfText">
+    <label for="copyText">Copiar texto</label>
+    <label for="pdfText">Cargar Documento</label>
+
+    <div class="forms">
+        <form action="/game" method="POST" class="copyTextArea">
+            <label for="txt">Ingresa el texto aqui!</label>
+            <textarea name="txt" id="txt" placeholder="..." required></textarea>
+            <input type="hidden" name="numbWords" id="numbWords">
+            <p id="numbWord"></p>
+            <input type="submit" value="Jugar" id="play" disabled>
+        </form>
+
+        <div class="pdfTextArea" >
+            <p>Puedes cargar unicamente archivos <strong>.pdf, .doc, .docx</strong></p>
+            <label for="pdf" id="pdfLabel">Carga tu archivo</label>
+            <form id="upload" onsubmit="false">
+                <input type="file" name="doc" id="pdf" accept=".pdf,.doc,.docx" required>
+            </form> 
+            <button id="play2" disabled>Subir</button>
+        </div>
+        
+    </div>
+    
+</div>
+
+<div class="pdfConfigCnt" id="pdfConfigCnt">
+    <div class="infoCnt">
+        <span id="otherFile">Subir otro archivo</span>
+        <div>
+            {{!-- informacion --}}
+            <h2 id="title">Titlo: Titlo del documento</h2>
+            <p id="author">Autor: Autor del documento</p>
+            <p id="pages">Total de paginas: 90</p>
+            <input type="hidden" id="hiddenName">
+        </div>
+        <div>
+            {{!-- Preferencias --}}
+            <form id="preferencias" >
+                <input type="checkbox" name="setPage" id="setPages">
+                <p>Elegir páginas</p>
+                <label for="setPages"><div id="labelCircle"></div></label>
+
+                <label for="desde" id="desdeLabel">Desde la pagina</label>
+                <input type="number" name="desde" id="desde" value="1" min="1" disabled>
+
+                <label for="hasta" id="hastaLabel">hasta</label>
+                <input type="number" name="hasta" id="hasta" value="2" min="2" disabled>
+            </form>
+            <button id="setBtn" disabled>Establecer</button>
+        </div>
+        <div>
+            {{!-- resultado --}}
+            <form method="POST" action="/game">
+                <label for="">Texto obtenido</label>
+                <textarea name="txt" id="theText" readonly></textarea>
+                <input type="hidden" name="numbWords" id="countWords">
+                <p id="totalPalabras">Total palabras: </p>
+                <input type="submit" value="Jugar"  id="play3">
+            </form>
+        </div>
+        <div class="load" id="loadCnt">
+            <div id="load">
+                <img src="http://localhost:3000/img/loading-process.png" alt="img de carga" id="imgLoad">
+                <p id="desLoad">CARGANDO...</p>
+            </div>
+        </div>
+    </div>
+</div> 
+
+<script src="/dist/appMain.js"></script>
